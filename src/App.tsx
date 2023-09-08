@@ -6,7 +6,7 @@ import Post from './pages/Post/Post';
 import Upload from './pages/Upload/Upload';
 import Mypage from './pages/Mypage/Mypage';
 import NotFound from './pages/NotFound';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 
 const stringUser: string | null = localStorage.getItem('user');
@@ -16,12 +16,12 @@ const App = () => {
     const location = useLocation();
     const showFooter = location.pathname === '/home' || location.pathname === '/post' || location.pathname === '/upload' || location.pathname === '/mypage';
 
-    // const navigate = useNavigate();
-    // useEffect(()=>{
-    //     if(!getUser){
-    //         navigate('/');
-    //     }
-    // },[navigate])
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if(!getUser){
+            navigate('/');
+        }
+    },[navigate])
 
     return (
         <div className="App">
