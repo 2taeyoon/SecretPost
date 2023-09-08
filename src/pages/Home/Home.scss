@@ -1,0 +1,3 @@
+@import '../Mixin.scss';
+
+.Home { @include pageHeight(); }
