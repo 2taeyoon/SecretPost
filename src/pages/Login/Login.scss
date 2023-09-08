@@ -12,7 +12,7 @@
 // SecretLogo component start!
 .secret_logo { @include flexColumnCenter; padding-bottom: 15px;
     div { margin: 5px 0; }
-    .secret_post_image { @include wH(150px, 150px); @include bgRPS; }
+    .secret_post_image { @include wH(150px, 150px); @include bgRPS; background-image: url('../../../public/image/secret_post_image_logo.png'); }
     .secret_post_text { @include wH(236px, 33px); @include bgRPS; }
 }
 // SecretLogo component end!
