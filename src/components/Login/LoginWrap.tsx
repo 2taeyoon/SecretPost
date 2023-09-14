@@ -1,7 +1,7 @@
 import React from 'react'
 import LoginIcon from './LoginIcon'
 import SecretLogo from './SecretLogo'
-import { GithubLoginHandler, GoogleLoginHandler } from '../api/firebse'
+import { GithubLoginHandler, GoogleLoginHandler } from '../api/firebase'
 
 
 const LoginWrap = () => {
