@@ -1,7 +1,8 @@
 @import '../../pages/Mixin.scss';
 
 .footer_wrap { display: flex; align-items: center; justify-content: space-around; position: absolute; bottom: 0; width: 100%; height: 60px; background: #f6f7fb; box-shadow: 0 -2px 0 0 #f1f0f5;
-    svg { width: 30px; height: 30px; fill: #b5b5b8;
-        &:hover { fill: #171717; }
-    }
+    svg { width: 30px; height: 30px; fill: #b5b5b8; }
+    .emphasis { fill: #171717; }
+    .mypage_img { width: 35px; height: 35px; border-radius: 50%; box-sizing: unset; }
+    .emphasis_img { border: 20.5px solid #ddd; }
 }

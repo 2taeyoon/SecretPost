@@ -4,6 +4,7 @@ import './index.css';
 import './fonts/pretendard.css'
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import UserProviderContext from './components/models/UserProviderContext';
 
 
 const root = ReactDOM.createRoot(
@@ -13,7 +14,9 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App/>
+            <UserProviderContext>
+                <App/>
+            </UserProviderContext>
         </BrowserRouter>
     </React.StrictMode>
 );

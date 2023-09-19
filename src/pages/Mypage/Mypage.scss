@@ -1,3 +1,15 @@
 @import '../Mixin.scss';
 
 .Mypage { @include pageHeight; }
+.mypage_wrap {
+    .mypage_top { padding: 25px;
+        .photo img { width: 150px; height: 150px; border-radius: 50%; }
+        .email {}
+        .logout {}
+        .introduce {}
+        .introduce_edit {}
+        .introduce_content {}
+        .introduce_text {}
+        .introduce_modify {}
+    }
+}
