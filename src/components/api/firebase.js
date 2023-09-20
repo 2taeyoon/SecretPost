@@ -37,13 +37,6 @@ export const GoogleLoginHandler = async () => {
             await setDoc(userDocRef, userData, { merge: true });
 
             window.location = '/home';
-            // const userInfo = { uid: userUid };
-            // localStorage.setItem('user', JSON.stringify(userInfo));
-            // const getUser = localStorage.getItem('user');
-            // const user = getUser ? JSON.parse(getUser) : null;
-            // if (user) {
-            //     window.location = '/home';
-            // }
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -64,19 +57,13 @@ export const GithubLoginHandler = async () => {
             const userData = {
                 name: resultUser.displayName,
                 email: resultUser.email,
-                photo: resultUser.photoURL
+                photo: resultUser.photoURL,
+                uid: resultUser.uid
             };
 
             await setDoc(userDocRef, userData, { merge: true });
 
             window.location = '/home';
-            // const userInfo = { uid: userUid };
-            // localStorage.setItem('user', JSON.stringify(userInfo));
-            // const getUser = localStorage.getItem('user');
-            // const user = getUser ? JSON.parse(getUser) : null;
-            // if (user) {
-            //     window.location = '/home';
-            // }
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -85,7 +72,3 @@ export const GithubLoginHandler = async () => {
             console.log('에러 메시지', errorMessage);
         });
 }
-
-
-
-//localStorage.removeItem('user');

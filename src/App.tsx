@@ -6,25 +6,27 @@ import Post from './pages/Post/Post';
 import Upload from './pages/Upload/Upload';
 import Mypage from './pages/Mypage/Mypage';
 import NotFound from './pages/NotFound';
-import { Routes, Route, useLocation/*, useNavigate*/ } from 'react-router-dom';
+import { Routes, Route, useLocation,/*, useNavigate*/ 
+Navigate} from 'react-router-dom';
 import Footer from './components/Footer/Footer';
+import { useUser } from './components/models/UserProviderContext';
+import Header from './components/Header/Header';
 
 // const stringUser: string | null = localStorage.getItem('user');
 // export const getUser = stringUser ? JSON.parse(stringUser) : null;
 
 const App = () => {
     const location = useLocation();
-    const showFooter = location.pathname === '/home' || location.pathname === '/post' || location.pathname === '/upload' || location.pathname === '/mypage';
+    const user = useUser();
+    const allowedPaths: string[] = ['/home', '/post', '/upload', '/mypage'];
 
-    // const navigate = useNavigate();
-    // useEffect(()=>{
-    //     if(!getUser){
-    //         navigate('/');
-    //     }
-    // },[navigate])
+    if(user == null && !allowedPaths.includes(location.pathname)){
+        return <Navigate to='/'/>;
+    }
 
     return (
         <div className="App">
+            { allowedPaths.includes(location.pathname) && <Header/> }
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/home" element={<Home />} />
@@ -33,7 +35,7 @@ const App = () => {
                 <Route path="/mypage" element={<Mypage />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
-            { showFooter && <Footer/> }
+            { allowedPaths.includes(location.pathname) && <Footer/> }
         </div>
     );
 }
