@@ -2,7 +2,7 @@
 
 .Mypage { @include pageHeight; }
 .mypage_wrap {
-    .mypage_top { display: flex; justify-content: space-evenly; padding: 25px; border-bottom: 1px solid #ddd;
+    .mypage_top { display: flex; justify-content: space-evenly; padding: 25px 80px; border-bottom: 1px solid #ddd;
         .photo_wrap {
             .photo img { @include wH(120px, 120px); border-radius: 50%; }
         }
@@ -18,7 +18,11 @@
                     }
                 }
             }
-            .introduce_text {}
+            .post_count { display: flex; padding-bottom: 15px;
+                div { font-weight: 500;
+                    &:not(:first-child) { padding-left: 10px; }
+                }
+            }
         }
     }
 }
@@ -26,10 +30,11 @@
 
 // setting_popup start!
 .setting_popup_bg { position: absolute; top: 45px; left: 0; width: 100%; height: calc(100% - 105px); background-color: rgba(0,0,0,.7); }
-.setting_popup_nickname { @include position50(45%); @include flexCenterCenter; flex-direction: column; background-color: #F6F7FB; width: 300px; height: 150px; color: #171717; text-align: center;
-    .nick_textarea { 
-        .nick { padding-bottom: 40px; }
-        textarea { margin-bottom: 40px; padding: 5px; border: 1px solid #dbdbdb; background-color: #F6F7FB; text-align: center; }
+.setting_popup_three { @include position50(45%); @include flexCenterCenter; flex-direction: column; background-color: #F6F7FB; width: 80%; height: 250px; color: #171717; text-align: center;
+    .textarea_nick_introduce_logout { width: 100%;
+        textarea { width: 80%; margin-bottom: 40px; padding: 5px; border: 1px solid #dbdbdb; background-color: #F6F7FB; text-align: center; }
+        input { width: 80%; margin-bottom: 40px; padding: 5px; border: 1px solid #dbdbdb; background-color: #F6F7FB; text-align: center; }
+        .logout { padding-bottom: 40px; }
     }
     .popup_btn { display: flex; position: absolute; bottom: 0; width: 100%; border-top: 1px solid #dbdbdb;
         .popup_btn_yes { width: 50%; padding: 15px 0; border-right: 1px solid #dbdbdb; cursor: pointer; }

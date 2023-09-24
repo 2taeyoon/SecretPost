@@ -31,12 +31,13 @@ export const GoogleLoginHandler = async () => {
             const userData = {
                 name: resultUser.displayName,
                 email: resultUser.email,
-                photo: resultUser.photoURL
+                photo: resultUser.photoURL,
+                uid: userUid
             };
 
             await setDoc(userDocRef, userData, { merge: true });
 
-            window.location = '/home';
+            window.location.replace('/home');
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -63,7 +64,7 @@ export const GithubLoginHandler = async () => {
 
             await setDoc(userDocRef, userData, { merge: true });
 
-            window.location = '/home';
+            window.location.replace('/home');
         })
         .catch((error) => {
             const errorCode = error.code;

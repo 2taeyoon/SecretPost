@@ -1,4 +1,4 @@
-import React/*, {useEffect}*/ from 'react';
+import React from 'react';
 import './App.css';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
@@ -6,14 +6,11 @@ import Post from './pages/Post/Post';
 import Upload from './pages/Upload/Upload';
 import Mypage from './pages/Mypage/Mypage';
 import NotFound from './pages/NotFound';
-import { Routes, Route, useLocation,/*, useNavigate*/ 
-Navigate} from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import { useUser } from './components/models/UserProviderContext';
 import Header from './components/Header/Header';
 
-// const stringUser: string | null = localStorage.getItem('user');
-// export const getUser = stringUser ? JSON.parse(stringUser) : null;
 
 const App = () => {
     const location = useLocation();

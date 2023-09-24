@@ -10,15 +10,22 @@ type MypageTopProps = {
 
 const MypageTop = ({user}: MypageTopProps) => {
     const [ introduce, setIntroduce ] = useState<string | null>(null);
+    const [ nickname, setNickname ] = useState<string | null>(null);
 
     useEffect(()=>{
         const fetchIntroduce = async () => {
             if(user && user?.uid) {
                 const userDocRef = doc(getFirestore(), 'users', user.uid);
                 const docSnap = await getDoc(userDocRef);
+                const userData = docSnap.data();
 
                 if(docSnap.exists()){
-                    const userData = docSnap.data();
+                    if(userData && userData.nickname){
+                        setNickname(userData.nickname);
+                    }
+                }
+
+                if(docSnap.exists()){
                     if(userData && userData.introduce){
                         setIntroduce(userData.introduce);
                     }
@@ -34,8 +41,12 @@ const MypageTop = ({user}: MypageTopProps) => {
             <PhotoWrap user={user}/>
             <div className='user_infomation'>
                 <div className='email_setting_wrap'>
-                    <div className='email'>{ user?.email }</div>
-                    <Setting />
+                    <div className='email'>{ nickname ? nickname : user?.email }</div>
+                    <Setting user={user}/>
+                </div>
+                <div className='post_count'>
+                    <div>게시글 0</div>
+                    <div>공유 0</div>
                 </div>
                 <div className='introduce_text'>{introduce ? introduce : '당신의 소개 공간입니다.'}</div>
             </div>
