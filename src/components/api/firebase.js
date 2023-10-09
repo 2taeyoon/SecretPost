@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signOut } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 
@@ -19,6 +19,7 @@ const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 export const auth = getAuth();
 const storeDB = getFirestore();
+
 
 export const GoogleLoginHandler = async () => {
     return signInWithPopup(auth, googleProvider)
@@ -72,4 +73,14 @@ export const GithubLoginHandler = async () => {
             console.log('에러 코드', errorCode);
             console.log('에러 메시지', errorMessage);
         });
+}
+
+export const LogoutHandler = async () => {
+    signOut(auth)
+        .then(()=>{
+            window.location.replace('/');
+        })
+        .catch((error)=>{
+            console.log('로그아웃 중 오류 발생', error);
+        })
 }

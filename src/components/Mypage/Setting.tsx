@@ -5,6 +5,7 @@ import { InputNickname, PopUpLogout, TextareaIntroduce } from './NicknameIntrodu
 import PopUpBtn from './PopUpBtn';
 import { settingInitialState, settingReducer } from '../models/Reducer';
 import { doc, getFirestore, setDoc } from 'firebase/firestore';
+import { LogoutHandler } from '../api/firebase';
 
 type SettingUser = {
     user: UserContextType;
@@ -68,7 +69,7 @@ const Setting = ({user}: SettingUser) => {
                 dispatch({ type: 'SET_INTRODUCE_TEXT', payload: '' });
             }
         } else {
-            // 로그아웃 로직짜기
+            LogoutHandler();
         }
     }
 

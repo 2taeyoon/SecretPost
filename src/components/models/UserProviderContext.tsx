@@ -15,7 +15,7 @@ const UserProviderContext = ({children}: UserProviderProps) => {
         const userLogin = auth.onAuthStateChanged((authUser) => {
             if(authUser){
                 setUser(authUser);
-                console.log('로그인한 유저 정보', authUser);
+                //console.log('로그인한 유저 정보', authUser);
             } else {
                 setUser(null);
             }
